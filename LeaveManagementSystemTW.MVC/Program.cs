@@ -2,6 +2,7 @@ using LeaveManagementSystem.Data;
 using LeaveManagementSystemTW.MVC.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace LeaveManagementSystemTW.MVC
 {
@@ -23,6 +24,8 @@ namespace LeaveManagementSystemTW.MVC
             builder.Services.AddDbContext<LeaveManagementSystemDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DataConnection"))
             );
+
+            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             builder.Services.AddControllersWithViews();
 
