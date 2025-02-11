@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LeaveManagementSystem.Data\LeaveManagementSystem.Data.csproj" />
     <ProjectReference Include="..\LeaveManagementSystem.Domain\LeaveManagementSystem.Domain.csproj" />
+    <ProjectReference Include="..\LeaveManagementSystemTW.Services\LeaveManagementSystemTW.Services.csproj" />
   </ItemGroup>
 
 </Project>

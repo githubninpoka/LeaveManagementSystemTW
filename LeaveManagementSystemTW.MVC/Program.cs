@@ -1,5 +1,6 @@
 using LeaveManagementSystem.Data;
 using LeaveManagementSystemTW.MVC.Data;
+using LeaveManagementSystemTW.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -25,7 +26,11 @@ namespace LeaveManagementSystemTW.MVC
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DataConnection"))
             );
 
-            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            //builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            // because I moved the automapper profile to the servicelayer ->
+            builder.Services.AddAutoMapper(Assembly.Load("LeaveManagementSystemTW.Services"));
+
+            builder.Services.AddScoped<ILeaveTypesService, LeaveTypesService>();
 
             builder.Services.AddControllersWithViews();
 

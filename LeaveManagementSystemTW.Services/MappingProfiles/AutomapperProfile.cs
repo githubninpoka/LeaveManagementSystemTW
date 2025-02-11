@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using LeaveManagementSystem.Domain.Models;
-using LeaveManagementSystemTW.MVC.Models.LeaveTypes;
+using LeaveManagementSystemTW.Services.Models.LeaveTypes;
 
-namespace LeaveManagementSystemTW.MVC.MappingProfiles;
+namespace LeaveManagementSystemTW.Services.MappingProfiles;
 
 public class AutomapperProfile : Profile
 {

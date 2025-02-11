@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace LeaveManagementSystemTW.MVC.Models.LeaveTypes;
+namespace LeaveManagementSystemTW.Services.Models.LeaveTypes;
 
 public class LeaveTypeReadOnlyVM
 {
