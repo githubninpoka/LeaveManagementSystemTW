@@ -3,6 +3,7 @@ using LeaveManagementSystemTW.MVC.Data;
 using LeaveManagementSystemTW.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Reflection;
 
 namespace LeaveManagementSystemTW.MVC
@@ -16,10 +17,15 @@ namespace LeaveManagementSystemTW.MVC
             // Add services to the container.
             var securityConnectionString = builder.Configuration.GetConnectionString("SecurityConnection") ?? throw new InvalidOperationException("Connection string 'SecurityConnection' not found.");
             builder.Services.AddDbContext<SecurityDbContext>(options =>
-                options.UseSqlServer(securityConnectionString));
+                {
+                    options.UseSqlServer(securityConnectionString);
+                    options.ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+                }
+                );
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<SecurityDbContext>();
 
             builder.Services.AddDbContext<LeaveManagementSystemDbContext>(options =>

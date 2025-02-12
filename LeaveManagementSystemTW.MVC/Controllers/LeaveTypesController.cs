@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LeaveManagementSystemTW.Services;
 using LeaveManagementSystemTW.Services.Models.LeaveTypes;
+using Microsoft.AspNetCore.Authorization;
+using LeaveManagementSystemTW.MVC.Common;
 
 namespace LeaveManagementSystemTW.MVC.Controllers
 {
+    [Authorize(Roles =Roles.Administrator)]
     public class LeaveTypesController : Controller
     {
         //private readonly LeaveManagementSystemDbContext _context;
