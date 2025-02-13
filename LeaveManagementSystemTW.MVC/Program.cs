@@ -1,10 +1,11 @@
 using LeaveManagementSystem.Data;
-using LeaveManagementSystemTW.MVC.Data;
+using LeaveManagementSystemTW.Security.Data;
 using LeaveManagementSystemTW.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Reflection;
+using SecurityDbContext = LeaveManagementSystemTW.Security.Data.SecurityDbContext;
 
 namespace LeaveManagementSystemTW.MVC
 {
@@ -24,7 +25,7 @@ namespace LeaveManagementSystemTW.MVC
                 );
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddDefaultIdentity<Security.Data.ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<SecurityDbContext>();
 
@@ -37,6 +38,9 @@ namespace LeaveManagementSystemTW.MVC
             builder.Services.AddAutoMapper(Assembly.Load("LeaveManagementSystemTW.Services"));
 
             builder.Services.AddScoped<ILeaveTypesService, LeaveTypesService>();
+            builder.Services.AddScoped<ILeaveAllocationsService, LeaveAllocationsService>();
+
+            builder.Services.AddHttpContextAccessor();
 
             builder.Services.AddControllersWithViews();
 

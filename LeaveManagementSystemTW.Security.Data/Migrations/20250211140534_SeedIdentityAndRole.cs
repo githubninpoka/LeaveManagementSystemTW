@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace LeaveManagementSystemTW.MVC.Data.Migrations
+namespace LeaveManagementSystemTW.Security.Data.Migrations
 {
     /// <inheritdoc />
     public partial class SeedIdentityAndRole : Migration

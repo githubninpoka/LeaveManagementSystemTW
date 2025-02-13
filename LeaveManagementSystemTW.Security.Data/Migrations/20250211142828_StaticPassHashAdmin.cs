@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace LeaveManagementSystemTW.MVC.Data.Migrations
+namespace LeaveManagementSystemTW.Security.Data.Migrations
 {
     /// <inheritdoc />
     public partial class StaticPassHashAdmin : Migration

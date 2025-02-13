@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace LeaveManagementSystemTW.MVC.Data;
+namespace LeaveManagementSystemTW.Security.Data;
 
 public class ApplicationUser : IdentityUser
 {

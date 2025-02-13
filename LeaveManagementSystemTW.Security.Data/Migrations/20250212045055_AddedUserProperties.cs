@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace LeaveManagementSystemTW.MVC.Data.Migrations
+namespace LeaveManagementSystemTW.Security.Data.Migrations
 {
     /// <inheritdoc />
     public partial class AddedUserProperties : Migration
