@@ -1,2 +1,2 @@
 ﻿global using LeaveManagementSystemTW.Security.Data;
-global using LeaveManagementSystemTW.MVC.Common;
+global using LeaveManagementSystemTW.Services.Common;

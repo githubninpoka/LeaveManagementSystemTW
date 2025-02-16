@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LeaveManagementSystem.Data;
 using LeaveManagementSystem.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
+using LeaveManagementSystemTW.Services.Common;
 
 namespace LeaveManagementSystemTW.MVC.Controllers;
 

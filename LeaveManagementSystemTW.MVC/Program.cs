@@ -39,6 +39,7 @@ namespace LeaveManagementSystemTW.MVC
 
             builder.Services.AddScoped<ILeaveTypesService, LeaveTypesService>();
             builder.Services.AddScoped<ILeaveAllocationsService, LeaveAllocationsService>();
+            builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
 
             builder.Services.AddHttpContextAccessor();
 

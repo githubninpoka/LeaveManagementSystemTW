@@ -5,6 +5,7 @@ namespace LeaveManagementSystemTW.Services
     public interface ILeaveTypesService
     {
         Task CreateAsync(LeaveTypeCreateVM leaveTypeCreateVM);
+        Task<bool> DaysExceedMaximum(int leaveTypeId, int days);
         Task EditAsync(LeaveTypeEditVM leaveTypeEditVM);
         Task<List<LeaveTypeReadOnlyVM>> GetAllAsync();
         Task<T?> GetAsync<T>(int id) where T : class;

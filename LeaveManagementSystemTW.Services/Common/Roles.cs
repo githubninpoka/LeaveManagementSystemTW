@@ -1,4 +1,4 @@
-﻿namespace LeaveManagementSystemTW.MVC.Common;
+﻿namespace LeaveManagementSystemTW.Services.Common;
 
 public static class Roles
 {

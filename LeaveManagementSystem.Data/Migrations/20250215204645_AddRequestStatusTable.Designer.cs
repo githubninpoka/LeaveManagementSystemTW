@@ -4,6 +4,7 @@ using LeaveManagementSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeaveManagementSystem.Data.Migrations
 {
     [DbContext(typeof(LeaveManagementSystemDbContext))]
-    partial class LeaveManagementSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250215204645_AddRequestStatusTable")]
+    partial class AddRequestStatusTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,7 +70,7 @@ namespace LeaveManagementSystem.Data.Migrations
                     b.Property<DateOnly>("EndDate")
                         .HasColumnType("date");
 
-                    b.Property<int>("LeaveRequestStatusId")
+                    b.Property<int>("LeaveRequestId")
                         .HasColumnType("int");
 
                     b.Property<int>("LeaveTypeId")
@@ -82,11 +85,14 @@ namespace LeaveManagementSystem.Data.Migrations
                     b.Property<DateOnly>("StartDate")
                         .HasColumnType("date");
 
+                    b.Property<int?>("StatusId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("LeaveRequestStatusId");
-
                     b.HasIndex("LeaveTypeId");
+
+                    b.HasIndex("StatusId");
 
                     b.ToTable("LeaveRequests");
                 });
@@ -196,17 +202,15 @@ namespace LeaveManagementSystem.Data.Migrations
 
             modelBuilder.Entity("LeaveManagementSystem.Domain.Models.LeaveRequest", b =>
                 {
-                    b.HasOne("LeaveManagementSystem.Domain.Models.LeaveRequestStatus", "Status")
-                        .WithMany()
-                        .HasForeignKey("LeaveRequestStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("LeaveManagementSystem.Domain.Models.LeaveType", "LeaveType")
                         .WithMany()
                         .HasForeignKey("LeaveTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("LeaveManagementSystem.Domain.Models.LeaveRequestStatus", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId");
 
                     b.Navigation("LeaveType");
 

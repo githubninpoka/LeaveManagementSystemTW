@@ -84,4 +84,10 @@ public class LeaveTypesService : ILeaveTypesService
         }
         return false;
     }
+
+    public async Task<bool> DaysExceedMaximum(int leaveTypeId, int days)
+    {
+        var leaveType = await _leaveManagementSystemDbContext.LeaveTypes.FindAsync(leaveTypeId);
+        return leaveType.NumberOfDays < days;
+    }
 }

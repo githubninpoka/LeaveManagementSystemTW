@@ -22,6 +22,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using LeaveManagementSystemTW.Services;
 using LeaveManagementSystemTW.Security.Data;
+using LeaveManagementSystemTW.Services.Common;
 
 namespace LeaveManagementSystemTW.MVC.Areas.Identity.Pages.Account
 {
