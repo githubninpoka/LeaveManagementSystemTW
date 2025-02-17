@@ -2,7 +2,7 @@
 
 public partial class LeaveRequestService
 {
-    public enum LeaveRequestStatus
+    public enum LeaveRequestStatusEnum
     {
         Pending = 1,
         Approved = 2,

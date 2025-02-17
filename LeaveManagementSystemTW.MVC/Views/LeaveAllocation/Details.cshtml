@@ -5,6 +5,7 @@
 @{
     ViewData["Title"] = "Allocations";
     var isAdmin = User.IsInRole(Roles.Administrator);
+    var isEmployee = User.IsInRole(Roles.Employee);
     string message = isAdmin ? "Employee does not yet have Allocated days off" : "Contact your admin for setting up your leave.";
 }
 
@@ -12,7 +13,12 @@
 
 @if (isAdmin)
 {
-    <a asp-action="Index">Back to Employees</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to Employees</a>
+}
+
+@if (isEmployee)
+{
+    <a asp-controller="LeaveRequests" asp-action="Index" class="btn btn-secondary">See my Leave Requests</a>
 }
 
 

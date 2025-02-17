@@ -5,10 +5,12 @@ namespace LeaveManagementSystemTW.Services;
 public interface ILeaveRequestService
 {
     Task CreateLeaveRequestAsync(LeaveRequestCreateVM model);
-    Task<EmployeeLeaveRequestListVM> GetEmployeeLeaveRequestsAsync();
-    Task<LeaveRequestListVM> GetAllLeaveRequestsAsync();
+    Task<List<LeaveRequestReadonlyListVM>> GetEmployeeLeaveRequestsAsync();
     Task CancelLeaveRequestAsync(int leaveRequestId);
-    Task ReviewLeaveRequestAsync(ReviewLeaveRequestVM model);
+
+    Task<EmployeeLeaveRequestListVM> AdminGetAllLeaveRequestsAsync();
+    Task<ReviewLeaveRequestVM> GetLeaveRequestForReviewAsync(int leaveRequestId);
+    Task ReviewLeaveRequestAsync(int leaveRequestId, bool approved);
 
     Task<bool> RequestDatesExceedAllocation(LeaveRequestCreateVM model);
 }

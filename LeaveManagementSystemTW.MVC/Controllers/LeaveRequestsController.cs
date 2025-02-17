@@ -15,7 +15,8 @@ public class LeaveRequestsController(
     // view requests by employee
     public async Task<IActionResult> Index()
     {
-        return View();
+        var leaveRequests = await _leaveRequestService.GetEmployeeLeaveRequestsAsync();
+        return View(leaveRequests);
     }
 
     // create requests
@@ -46,6 +47,7 @@ public class LeaveRequestsController(
         if (ModelState.IsValid)
         {
             await _leaveRequestService.CreateLeaveRequestAsync(model);
+            return RedirectToAction("Index");
         }
         var leaveTypes = await _leaveTypesService.GetAllAsync();
         SelectList leaveTypesList = new SelectList(leaveTypes, "Id", "Name");
@@ -56,27 +58,32 @@ public class LeaveRequestsController(
     // employee cancel
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Cancel(int leaveRequestId /*VM*/)
+    public async Task<IActionResult> Cancel(int leaveRequestId )
     {
-        return View();
+        await _leaveRequestService.CancelLeaveRequestAsync(leaveRequestId);
+
+        return RedirectToAction("Index");
     }
 
     // admin view requests
     public async Task<IActionResult> ListRequests()
     {
-        return View();
+        var model = await _leaveRequestService.AdminGetAllLeaveRequestsAsync();
+        return View(model);
     }
 
     // admin review request
     public async Task<IActionResult> Review(int leaveRequestId)
     {
-        return View();
+        ReviewLeaveRequestVM reviewLeaveRequestVM = await _leaveRequestService.GetLeaveRequestForReviewAsync(leaveRequestId);
+        return View(reviewLeaveRequestVM);
     }
     // admin review post
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Review(/*vm*/)
+    public async Task<IActionResult> Review(int leaveRequestId, bool approved)
     {
-        return View();
+        await _leaveRequestService.ReviewLeaveRequestAsync(leaveRequestId, approved);
+        return RedirectToAction("ListRequests");
     }
 }
